@@ -23,7 +23,7 @@ function* watcherSaga(){
 
 function* getSearchImages(action){
     try{
-        const elementsResponse = yield axios.get(`/api/search?query=${action.payload.query}`);
+        const elementsResponse = yield axios.get(`/api/search?search=${action.payload.query}`);
         yield dispatch({ type: 'SET_SEARCH', payload: elementsResponse.data });
     }catch(err){
         console.log('Error in GET search request:', err);

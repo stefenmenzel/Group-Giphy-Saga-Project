@@ -16,4 +16,19 @@ router.get('/', (req, res) => {
         });
 });
 
+router.post('/', (req, res) => {
+    const queryText = `
+        INSERT INTO "category" ("category_name)
+        VALUES ($1);
+    `
+    pool.query(queryText, [req.body.category])
+    .then((result) => {
+        console.log("Response from POST category route:", result);
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('Error in POST category route:', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;
