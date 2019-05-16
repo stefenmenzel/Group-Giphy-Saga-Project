@@ -13,7 +13,8 @@ class SearchForm extends Component{
         });
     }
 
-    submitSearch = () => {
+    submitSearch = (event) => {
+        event.preventDefault();
         this.props.dispatch({type: 'GET_SEARCH', payload: {query: this.state.searchString}});
     }
 
