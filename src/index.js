@@ -42,7 +42,7 @@ function* getFavImages(){
 function* getCategories(){
     try{
         const elementsResponse = yield axios.get('/api/category');
-        yield dispatch({type: 'SET_CAT', payload: elementsResponse.data});
+        yield dispatch({type: 'SET_CAT', payload: elementsResponse});
     }catch(err){
         console.log('Error in GET categories request:', err);
     }

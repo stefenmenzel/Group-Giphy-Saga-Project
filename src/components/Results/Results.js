@@ -12,7 +12,7 @@ class Results extends Component {
             <h1>Results of Search</h1>
           {this.props.searchedImages.map((image) => {
             return(
-              <ImageCard key={image.id} link={image.images.downsized.url}/>
+              <ImageCard key={image.id} link={image.images.downsized.url} isOnSearch={true}/>
             )
           })}
 

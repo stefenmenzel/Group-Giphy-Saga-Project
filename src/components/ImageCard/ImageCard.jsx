@@ -16,6 +16,23 @@ import Button from '@material-ui/core/Button';
 
 class ImageCard extends Component {
 
+    setCategory = (event) => {
+        this.props.dispatch({type: 'SET_NEW_CAT', payload: {category: event.target.value}})
+    }
+
+    conditionalButton = () => {
+        return (
+            (this.props.isOnSearch) ? 
+                <Button className="faveBtn" variant="contained" color="secondary" size="small" onClick={this.handleFavClick}>
+                    Favorite This Gif
+                 </Button> :
+                <select onChange={(e) => this.setCategory(e)} value={this.props.reduxState.categoryReducer.data[0].category_name}>
+                    <option value={this.props.reduxState.categoryReducer.data[0].category_name}>{this.props.reduxState.categoryReducer.data[0].category_name}</option>
+                    <option value={this.props.reduxState.categoryReducer.data[1].category_name}>{this.props.reduxState.categoryReducer.data[1].category_name}</option>
+                    <option value={this.props.reduxState.categoryReducer.data[2].category_name}>{this.props.reduxState.categoryReducer.data[2].category_name}</option>
+                 </select>
+        )
+    }
     handleFavClick = (event) => {
         console.log('in handleFavClick')
         //NEED TO ADD PAYLOAD TO THE DISPATCH
@@ -24,6 +41,7 @@ class ImageCard extends Component {
 
 
     render() {
+        console.log('this.props.reduxState.getCategories:', this.props.reduxState.categoryReducer);
         return (
             <div>
             <Card className="gifCard">
@@ -46,9 +64,10 @@ class ImageCard extends Component {
                 </CardActionArea>
             </Card>
            
-                 <Button className="faveBtn" variant="contained" color="secondary" size="small" onClick={this.handleFavClick}>
+                    {this.conditionalButton()}
+                 {/* <Button className="faveBtn" variant="contained" color="secondary" size="small" onClick={this.handleFavClick}>
                             Favorite This Gif
-                 </Button>
+                 </Button> */}
             </div>
         );
     }
