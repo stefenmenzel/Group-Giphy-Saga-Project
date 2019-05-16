@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './Header.css'
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Link } from 'react-router-dom';
 
 class Header extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Find Gifs</h1>
+            <div className ="banner">
+                <h1 className ="head">Find Gifs</h1>
                 <Router>
                     <div className ="pageLinks">
-                        <ul>
+                        <ul className ="linklist">
                             <li>
                                 <Link to="/">Search</Link>
                             </li>

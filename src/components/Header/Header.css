@@ -1,6 +1,24 @@
 li{
-    margin: 0;
-    padding: 5px;
-    height: 30px;
+    padding-inline-start: 15px;
+    padding-bottom: 10px;
+    font-size: 20px;
     display: inline-block;
+}
+
+.linklist{
+    margin-left: 250px;
+    text-align: center;
+}
+
+.head{
+    margin-top: 10px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 60px;
+    color: rgb(55, 91, 190);
+    position: relative;
+}
+
+.banner{
+    background-image: linear-gradient(110deg, #32bcf3bb 17%, #3b27ebbd 95%);
 }
