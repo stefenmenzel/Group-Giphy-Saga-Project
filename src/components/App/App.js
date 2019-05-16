@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 import Search from '../Search/Search.js';
 import Favorites from '../Favorites/Favorites.js';
+import Header from '../Favorites/Favorites.js';
 class App extends Component {
 
   render() {
