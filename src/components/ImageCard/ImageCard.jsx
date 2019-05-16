@@ -40,17 +40,6 @@ class Header extends Component {
                     </CardActions>
                 </CardActionArea>
             </Card>
-
-
-
-
-
-
-
-            <div>
-                <h1>Gif Gif Gif</h1>
-                {/* <img src="../Images/computing.gif" alt="computering"/> */}
-            </div>
         );
     }
 
