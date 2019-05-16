@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
 import ImageCard from '../ImageCard/ImageCard.jsx';
+import { connect } from 'react-redux';
 
 class Results extends Component {
 
     render() {
+      console.log('THIS is searchReducer: ', this.props.searchedImages);
+      
       return (
         <div>
             <h1>Results of Search</h1>
-          <ImageCard />
+          {this.props.searchedImages.map((image) => {
+            return(
+              <ImageCard key={image.id} link={image.images.downsized.url}/>
+            )
+          })}
+
+
+          {/* <ImageCard /> */}
         </div>
         );
     }
         
 }
 
-export default Results;
+const mapStateToProps = reduxState => ({
+  searchedImages : reduxState.searchReducer
+})
+
+export default connect(mapStateToProps)(Results);
