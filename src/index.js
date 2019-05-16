@@ -13,6 +13,57 @@ const sagaMiddleware = createSagaMiddleware();
 
 function* watcherSaga(){
     console.log('saga is always watching');
+    yield takeEvery('GET_SEARCH', getSearchImages);
+    yield takeEvery('GET_FAV', getFavImages);
+    yield takeEvery('GET_CAT', getCategories);
+
+    yield takeEvery('SET_NEW_FAV', setNewFav);
+    yield takeEvery('SET_NEW_CAT', setNewCategory);
+}
+
+function* getSearchImages(action){
+    try{
+        const elementsResponse = yield axios.get(`/api/search?query=${action.payload.query}`);
+        yield dispatch({ type: 'SET_SEARCH', payload: elementsResponse.data });
+    }catch(err){
+        console.log('Error in GET search request:', err);
+    };
+}
+
+function* getFavImages(){
+    try{
+        const elementsResponse = yield axios.get('/api/favorite');
+        yield dispatch({type: 'SET_FAV', payload: elementsResponse.data})
+    }catch(err){
+        console.log('Error in GET favs request:', err);
+    };
+}
+
+function* getCategories(){
+    try{
+        const elementsResponse = yield axios.get('/api/category');
+        yield dispatch({type: 'SET_CAT', payload: elementsResponse.data});
+    }catch(err){
+        console.log('Error in GET categories request:', err);
+    }
+}
+
+function* setNewFav(action){
+    try{
+        yield axios.post('/api/favorite', action.payload);
+        yield dispatch({type:'GET_FAV'});
+    }catch(err){
+        console.log('Error in POST fav request:', err);
+    };
+}
+
+function* setNewCategory(action){
+    try{
+        yield axios.post('/api/category', action.payload);
+        yield dispatch({type: 'GET_CAT'});
+    }catch(err){
+        console.log('Error in POST cat request:', err);
+    }
 }
 
 const searchReducer = (state = [], action) => {
@@ -22,9 +73,25 @@ const searchReducer = (state = [], action) => {
     return state;
 }
 
+const favoritesReducer = (state = [], action) => {
+    if(action.type === 'SET_FAV'){
+        return action.payload;
+    }
+    return state;
+}
+
+const categoryReducer = (state = [], action) => {
+    if(action.type === 'SET_CAT'){
+        return action.payload;
+    }
+    return state;
+}
+
 const store = createStore(
     combineReducers({
         searchReducer,
+        favoritesReducer,
+        categoryReducer,
     }),
     applyMiddleware(logger, sagaMiddleware)
 );
