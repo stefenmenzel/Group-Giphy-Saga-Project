@@ -19,7 +19,7 @@ class ImageCard extends Component {
     handleFavClick = (event) => {
         console.log('in handleFavClick')
         //NEED TO ADD PAYLOAD TO THE DISPATCH
-        this.props.dispatch({type: 'SET_NEW_FAV', payload: {link: "./Images/computing.gif"}})
+        this.props.dispatch({type: 'SET_NEW_FAV', payload: {link: this.props.link}})
     };
 
 
@@ -29,7 +29,7 @@ class ImageCard extends Component {
             <Card className="gifCard">
                 <CardActionArea>
                     <CardMedia className="gifImage">
-                        <img src="./Images/computing.gif" alt="The gif you chose"/>
+                        <img src={this.props.link} alt="Heres your gif"/>
                         {/* // image="../Images/computing.gif" */}
                         {/* // title="gif goes here" */}
                     </CardMedia>
