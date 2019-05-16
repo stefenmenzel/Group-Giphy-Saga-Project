@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import ImageCard from '../ImageCard/ImageCard.jsx';
+import ImageCard from '../ImageCard/ImageCard.jsx';
 
 class Results extends Component {
 
@@ -7,7 +7,7 @@ class Results extends Component {
       return (
         <div>
             <h1>Results of Search</h1>
-          {/* <ImageCard /> */}
+          <ImageCard />
         </div>
         );
     }
