@@ -18,6 +18,8 @@ class ImageCard extends Component {
 
     componentDidMount(){
         console.log(`This image: ${this.props.imageID} has a link of ${this.props.link}`);
+        console.log(`${this.props.imageID} image has a category of: ${this.props.category}`);
+        console.log("is category falsey?", (this.props.category) ? 'truthy' : 'falsey');
     }
     setCategory = (event) => {
         // console.log('from the select', event.target.value);
@@ -31,11 +33,17 @@ class ImageCard extends Component {
                 <Button className="faveBtn" variant="contained" color="secondary" size="small" onClick={this.handleFavClick}>
                     Favorite This Gif
                  </Button> :
-                <select onChange={(e) => this.setCategory(e)} value={3}>
-                    <option value={1} label={ this.props.reduxState.categoryReducer.data[0].category_name} />
-                    <option value={2} label={this.props.reduxState.categoryReducer.data[1].category_name} />
-                    <option value={3} label={this.props.reduxState.categoryReducer.data[2].category_name} />
-                 </select>
+                 <div>
+                    <select onChange={(e) => this.setCategory(e)}>
+                        {this.props.reduxState.categoryReducer.data.map((cat, i) => {
+                            return(
+                                (this.props.category && (i+1) === this.props.category) ? 
+                                    <option value={i + 1} label={cat.category_name} selected/> :
+                                    <option value={i + 1} label={cat.category_name}  />
+                            )
+                        })}
+                    </select>
+                 </div>
         )
     }
     handleFavClick = (event) => {

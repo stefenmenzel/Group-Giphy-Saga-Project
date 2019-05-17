@@ -18,7 +18,7 @@ class FavoritesDisplay extends Component {
           {this.props.favoriteImages.map((image) => {
             return(
  
-              <ImageCard key={image.id} isOnSearch={false} link={image.giphy_link}/>
+              <ImageCard key={image.id} imageID={image.id} isOnSearch={false} category={image.category_id} link={image.giphy_link}/>
             )
           })}
 
