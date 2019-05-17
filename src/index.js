@@ -59,10 +59,10 @@ function* setNewFav(action){
 
 function* setNewCategory(action){
     try{
-        yield axios.post('/api/category', action.payload);
+        yield axios.put('/api/category', action.payload);
         yield dispatch({type: 'GET_CAT'});
     }catch(err){
-        console.log('Error in POST cat request:', err);
+        console.log('Error in PUT cat request:', err);
     }
 }
 

@@ -17,7 +17,9 @@ import Button from '@material-ui/core/Button';
 class ImageCard extends Component {
 
     setCategory = (event) => {
-        this.props.dispatch({type: 'SET_NEW_CAT', payload: {category: event.target.value}})
+        // console.log('from the select', event.target.value);
+        // console.log('from image card id:', this.props.imageID);
+        this.props.dispatch({type: 'SET_NEW_CAT', payload: {category: event.target.value, id: this.props.imageID}})
     }
 
     conditionalButton = () => {
@@ -26,10 +28,10 @@ class ImageCard extends Component {
                 <Button className="faveBtn" variant="contained" color="secondary" size="small" onClick={this.handleFavClick}>
                     Favorite This Gif
                  </Button> :
-                <select onChange={(e) => this.setCategory(e)} value={this.props.reduxState.categoryReducer.data[0].category_name}>
-                    <option value={this.props.reduxState.categoryReducer.data[0].category_name}>{this.props.reduxState.categoryReducer.data[0].category_name}</option>
-                    <option value={this.props.reduxState.categoryReducer.data[1].category_name}>{this.props.reduxState.categoryReducer.data[1].category_name}</option>
-                    <option value={this.props.reduxState.categoryReducer.data[2].category_name}>{this.props.reduxState.categoryReducer.data[2].category_name}</option>
+                <select onChange={(e) => this.setCategory(e)} value={3}>
+                    <option value={1} label={ this.props.reduxState.categoryReducer.data[0].category_name} />
+                    <option value={2} label={this.props.reduxState.categoryReducer.data[1].category_name} />
+                    <option value={3} label={this.props.reduxState.categoryReducer.data[2].category_name} />
                  </select>
         )
     }
