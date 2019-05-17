@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 
 class Results extends Component {
 
-    componentDidMount(){
-      this.props.dispatch({type: 'GET_CAT'});
-    }
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_CAT' })
+    this.props.dispatch({ type: 'GET_FAV' })
+  }
 
     render() {
       console.log('THIS is searchReducer: ', this.props.searchedImages);

@@ -34,6 +34,7 @@ class ImageCard extends Component {
                     Favorite This Gif
                  </Button> :
                  <div>
+                     <p>Category:</p>
                     <select onChange={(e) => this.setCategory(e)}>
                         {this.props.reduxState.categoryReducer.data.map((cat, i) => {
                             return(
