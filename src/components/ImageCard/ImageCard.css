@@ -6,8 +6,21 @@
 .gifCard {
     width: 500px;
     height: 350px;
+    background-image: linear-gradient(110deg, #f36932bb 37%, #3b27ebbd 95%);
+    border: 2px solid rgb(182, 162, 238);
+    box-shadow: inset 2px 3px 8px 3px #350404;
 }
 
 .faveBtn {
     
 }
+
+
+
+
+
+
+
+
+
+

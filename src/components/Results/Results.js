@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ImageCard from '../ImageCard/ImageCard.jsx';
+import './Results.css'
 import { connect } from 'react-redux';
 
 class Results extends Component {
@@ -14,7 +15,7 @@ class Results extends Component {
 
 
       return (
-        <div>
+        <div className="results">
             <h1>Results of Search</h1>
           {this.props.searchedImages.map((image, i) => {
             return(

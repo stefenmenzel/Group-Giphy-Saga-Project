@@ -1,0 +1,19 @@
+.results{
+    background: #f38e66bb
+}
+
+h1 {
+    text-align: center;
+    padding: 7px;
+    color: #4b39ebbd;
+    text-shadow: 1px 1px .5px black
+}
+
+h1::before{
+    content: '>';
+    color: rgb(198, 149, 238);
+    mix-blend-mode: difference;
+    filter: blur(2px);
+  }
+
+ 
