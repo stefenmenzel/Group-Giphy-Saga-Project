@@ -16,14 +16,38 @@ import Button from '@material-ui/core/Button';
 
 class ImageCard extends Component {
 
+    componentDidMount(){
+        console.log(`This image: ${this.props.imageID} has a link of ${this.props.link}`);
+    }
+    setCategory = (event) => {
+        // console.log('from the select', event.target.value);
+        // console.log('from image card id:', this.props.imageID);
+        this.props.dispatch({type: 'SET_NEW_CAT', payload: {category: event.target.value, id: this.props.imageID}})
+    }
+
+    conditionalButton = () => {
+        return (
+            (this.props.isOnSearch) ? 
+                <Button className="faveBtn" variant="contained" color="secondary" size="small" onClick={this.handleFavClick}>
+                    Favorite This Gif
+                 </Button> :
+                <select onChange={(e) => this.setCategory(e)} value={3}>
+                    <option value={1} label={ this.props.reduxState.categoryReducer.data[0].category_name} />
+                    <option value={2} label={this.props.reduxState.categoryReducer.data[1].category_name} />
+                    <option value={3} label={this.props.reduxState.categoryReducer.data[2].category_name} />
+                 </select>
+        )
+    }
     handleFavClick = (event) => {
         console.log('in handleFavClick')
+        console.log("!!!11!@212121212 we here:", this.props.link)
         //NEED TO ADD PAYLOAD TO THE DISPATCH
         this.props.dispatch({type: 'SET_NEW_FAV', payload: {link: this.props.link}})
     };
 
 
     render() {
+        console.log('this.props.reduxState.getCategories:', this.props.reduxState.categoryReducer);
         return (
             <div>
             <Card className="gifCard">
@@ -46,9 +70,10 @@ class ImageCard extends Component {
                 </CardActionArea>
             </Card>
            
-                 <Button className="faveBtn" variant="contained" color="secondary" size="small" onClick={this.handleFavClick}>
+                    {this.conditionalButton()}
+                 {/* <Button className="faveBtn" variant="contained" color="secondary" size="small" onClick={this.handleFavClick}>
                             Favorite This Gif
-                 </Button>
+                 </Button> */}
             </div>
         );
     }

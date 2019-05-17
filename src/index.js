@@ -42,7 +42,7 @@ function* getFavImages(){
 function* getCategories(){
     try{
         const elementsResponse = yield axios.get('/api/category');
-        yield dispatch({type: 'SET_CAT', payload: elementsResponse.data});
+        yield dispatch({type: 'SET_CAT', payload: elementsResponse});
     }catch(err){
         console.log('Error in GET categories request:', err);
     }
@@ -59,10 +59,10 @@ function* setNewFav(action){
 
 function* setNewCategory(action){
     try{
-        yield axios.post('/api/category', action.payload);
-        yield dispatch({type: 'GET_CAT'});
+        yield axios.put('/api/category', action.payload);
+        yield dispatch({type: 'GET_FAV'});
     }catch(err){
-        console.log('Error in POST cat request:', err);
+        console.log('Error in PUT cat request:', err);
     }
 }
 

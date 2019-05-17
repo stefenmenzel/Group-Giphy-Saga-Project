@@ -5,15 +5,21 @@ import { connect } from 'react-redux';
 
 class Results extends Component {
 
+    componentDidMount(){
+      this.props.dispatch({type: 'GET_CAT'});
+    }
+
     render() {
       console.log('THIS is searchReducer: ', this.props.searchedImages);
-      
+    
+
+
       return (
         <div className="results">
             <h1>Results of Search</h1>
-          {this.props.searchedImages.map((image) => {
+          {this.props.searchedImages.map((image, i) => {
             return(
-              <ImageCard key={image.id} link={image.images.downsized.url}/>
+              <ImageCard key={image.id} imageID={i+1} link={image.images.downsized.url} isOnSearch={true}/>
             )
           })}
 

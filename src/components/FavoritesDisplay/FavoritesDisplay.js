@@ -17,8 +17,7 @@ class FavoritesDisplay extends Component {
             <h1 className ="results">Favorites Display</h1>
           {this.props.favoriteImages.map((image) => {
             return(
-                
-                
+ 
               <ImageCard key={image.id} isOnSearch={false} link={image.giphy_link}/>
             )
           })}
