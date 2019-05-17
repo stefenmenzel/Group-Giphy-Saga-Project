@@ -16,7 +16,7 @@ class FavoritesDisplay extends Component {
             <h1>Favorites Display</h1>
           {this.props.favoriteImages.map((image) => {
             return(
-              <ImageCard key={image.id} link={image.images.downsized.url}/>
+              <ImageCard key={image.id} link={image.giphy_link}/>
             )
           })}
 

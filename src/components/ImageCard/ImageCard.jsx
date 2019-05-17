@@ -16,6 +16,9 @@ import Button from '@material-ui/core/Button';
 
 class ImageCard extends Component {
 
+    componentDidMount(){
+        console.log(`This image: ${this.props.imageID} has a link of ${this.props.link}`);
+    }
     setCategory = (event) => {
         // console.log('from the select', event.target.value);
         // console.log('from image card id:', this.props.imageID);
@@ -37,6 +40,7 @@ class ImageCard extends Component {
     }
     handleFavClick = (event) => {
         console.log('in handleFavClick')
+        console.log("!!!11!@212121212 we here:", this.props.link)
         //NEED TO ADD PAYLOAD TO THE DISPATCH
         this.props.dispatch({type: 'SET_NEW_FAV', payload: {link: this.props.link}})
     };
