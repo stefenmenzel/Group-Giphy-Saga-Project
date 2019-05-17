@@ -5,7 +5,7 @@ class Favorites extends Component {
     render() {
         return (
             <div>
-                <h1>Fav Test</h1>
+                <h1>Favorites</h1>
             </div>
         );
     }
