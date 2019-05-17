@@ -6,17 +6,20 @@ class FavoritesDisplay extends Component {
 
     componentDidMount(){
         this.props.dispatch({type: 'GET_CAT'})
+        this.props.dispatch({type: 'GET_FAV'})
     }
 
     render() {
       console.log('THIS is favoritesReducer: ', this.props.favoriteImages);
-      
+      console.log('image is', this.props.favoriteImages);
       return (
         <div>
-            <h1>Favorites Display</h1>
+            <h1 className ="results">Favorites Display</h1>
           {this.props.favoriteImages.map((image) => {
             return(
-              <ImageCard key={image.id} link={image.images.downsized.url}/>
+                
+                
+              <ImageCard key={image.id} isOnSearch={false} link={image.giphy_link}/>
             )
           })}
 

@@ -7,7 +7,7 @@ class Header extends Component {
     render() {
         return (
             <div className ="banner">
-                <h1 className ="head">Find Gifs</h1>
+                <p className ="head">Find Gifs</p>
                 <Router>
                     <div className ="pageLinks">
                         <ul className ="linklist">

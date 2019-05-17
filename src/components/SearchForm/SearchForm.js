@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
+import Results from '../Results/Results.js';
 class SearchForm extends Component{
     
     state = {
@@ -25,6 +25,7 @@ class SearchForm extends Component{
                     <input onChange={this.handleChange} type="text" placeholder="Search Jifs" />
                     <button type="submit">Search Jifs</button>
                 </form>
+                <Results />  
             </div>
         )
     }
