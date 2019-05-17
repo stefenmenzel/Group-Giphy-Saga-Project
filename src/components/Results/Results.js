@@ -10,7 +10,9 @@ class Results extends Component {
 
     render() {
       console.log('THIS is searchReducer: ', this.props.searchedImages);
-      
+    
+
+
       return (
         <div>
             <h1>Results of Search</h1>
