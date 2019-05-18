@@ -11,9 +11,11 @@ CREATE TABLE "category" (
 
 -- Favorite Link Table
 CREATE TABLE "favorite_links" (
-	"id" SERIAL PRIMARY KEY,
-	"giphy_link" VARCHAR (250) NOT NULL
+    "id" SERIAL PRIMARY KEY,
+    "giphy_link" VARCHAR (250) NOT NULL,
+	"category_id" int
 );
+
 
 
 -- Favorite_Link_Category Table
